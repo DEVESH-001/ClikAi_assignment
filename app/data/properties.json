@@ -1,0 +1,64 @@
+{
+    "properties": [
+        {
+            "propertyName": "Amanora desire towers",
+            "latitude": "18.5172622",
+            "longitude": "73.9389447",
+            "apartmentType": "2bhk",
+            "salePrice": "65,00,000",
+            "rentPrice": "25,000",
+            "address": "Amanora Park Town, Hadapsar, Pune, Maharashtra 411028",
+            "zipcode": "411028"
+        },
+        {
+            "propertyName": "Silver Oak Society",
+            "latitude": "8.5334206",
+            "longitude": "73.9578425",
+            "apartmentType": "3bhk",
+            "salePrice": "95,00,000",
+            "rentPrice": "35,000",
+            "address": "Zed Corner, Silver Oak Society, SNBP School Road,40 ft Road, Mundhwa - Manjari Rd, Manjari Budruk, Pune, Maharashtra 412307",
+            "zipcode": "412307"
+        },
+        {
+            "propertyName": "Chintamani Society",
+            "latitude": "8.5334206",
+            "longitude": "73.9578425",
+            "apartmentType": "1bhk",
+            "salePrice": "45,00,000",
+            "rentPrice": "15,000",
+            "address": "Manjari Budruk, Maharashtra 412307",
+            "zipcode": "412307"
+        },
+        {
+            "propertyName": "Amanora desire towers",
+            "latitude": "18.5172622",
+            "longitude": "73.9389447",
+            "apartmentType": "2bhk",
+            "salePrice": "65,00,000",
+            "rentPrice": "25,000",
+            "address": "Amanora Park Town, Hadapsar, Pune, Maharashtra 411028",
+            "zipcode": "411028"
+        },
+        {
+            "propertyName": "Atlanta east",
+            "latitude": "18.5336342",
+            "longitude": "73.950901",
+            "apartmentType": "2bhk",
+            "salePrice": "45,00,000",
+            "rentPrice": "15,000",
+            "address": "Sharad Nagar, Mundhwa, Pune, Maharashtra 411036",
+            "zipcode": "411036"
+        },
+        {
+            "propertyName": "Eaves garden Society",
+            "latitude": "18.533268",
+            "longitude": "73.9479184",
+            "apartmentType": "4bhk",
+            "salePrice": "105,00,000",
+            "rentPrice": "65,000",
+            "address": "Mundhwa, Pune, Maharashtra 411036",
+            "zipcode": "411036"
+        }
+    ]
+}
