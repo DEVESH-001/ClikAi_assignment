@@ -1,33 +1,35 @@
-import { Building, DollarSign, Percent, Users } from 'lucide-react';
-import React from 'react'
+import { Building, DollarSign, Percent, Users } from "lucide-react";
+import React from "react";
 
-const StatsSection = () => {
+const StatsSection = ({ stats}) => {
   return (
-
-      <div className="grid grid-cols-4 gap-4 mb-4  justify-between">
-        <div className="bg-white p-4 rounded-lg shadow text-center">
-          <p className="text-gray-500">Total Listings</p>
-          <p className="text-2xl font-bold">100</p>
-          <Building/>
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow text-center">
-          <p className="text-gray-500">Average Price</p>
-          <p className="text-2xl font-bold">$61,472,821</p>
-          <DollarSign/>
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow text-center">
-          <p className="text-gray-500">Average Cap Rate</p>
-          <p className="text-2xl font-bold">4.89%</p>
-         <Percent/> 
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow text-center">
-          <p className="text-gray-500">Total Units</p>
-          <p className="text-2xl font-bold">11,232</p>
-         <Users/> 
-        </div>
+    <div className="grid grid-cols-4 gap-4 mb-4 text-center">
+      <div>
+        <p>Total Listings</p>
+        <p>{stats.totalListings}</p>
+        <Building />
       </div>
+      <div>
+        <p>Average Price</p>
+        <p>${stats.averagePrice.toLocaleString()}</p>
+        {/* <p>{Number(stats.averagePrice.toLocaleString().replace(/[^0-9.-]+/g, ""))}</p>
+        <p>Number(currency.replace(/[^0-9.-]+/g,""))</p> */}
+        {/* <p>${stats.averagePrice.toLocaleString(/[^0-9.-]+/g, "")}</p> */}
 
+        <DollarSign />
+      </div>
+      <div>
+        <p>Average Cap Rate</p>
+        <p>{stats.averageCapRate.toFixed(2)}%</p>
+        <Percent />
+      </div>
+      <div>
+        <p>Total Units</p>
+        <p>{stats.totalUnits}</p>
+        <Users />
+      </div>
+    </div>
   );
-}
+};
 
-export default StatsSection
+export default StatsSection;
