@@ -58,7 +58,7 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
       <SidebarContent className="space-y-4">
         <SidebarGroup>
           {/* Input Area For ZipCode & Property Address */}
-          <label className="text-sm">Zip Code:</label>
+          <label className="text-sm font-bold">Zip Code</label>
           <input
             type="text"
             name="zipCode"
@@ -68,18 +68,18 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
             className="w-full p-2 border rounded-md mb-2"
           />
 
-          <label>Property Address</label>
+          <label className="text-sm font-bold">Property Address</label>
           <input
             type="text"
             name="propertyAddress"
             placeholder="Enter address"
             value={filters.propertyAddress}
             onChange={handleChange}
-            className="w-full p-2 border rounded-md mb-2"
+            className="w-full p-2 border  rounded-md mb-2"
           />
 
           {/* Range Slider for Search Radius */}
-          <label className="text-sm">Search Radius (miles)</label>
+          <label className="text-sm font-bold">Search Radius (miles)</label>
           <input
             type="range"
             name="searchRadius"
@@ -87,12 +87,11 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
             max="100"
             value={filters.searchRadius}
             onChange={handleChange}
-            className="w-full mb-2"
           />
-          <p>{filters.searchRadius} miles</p>
+          <p className="text-sm ">{filters.searchRadius} miles</p>
 
           {/* Price Range Inputs */}
-          <label className="text-sm">Price Range:</label>
+          <label className="text-sm  mt-2 font-bold ">Price Range</label>
           <input
             type="text"
             name="priceRangeMin"
@@ -111,7 +110,7 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
           />
 
           {/* Property Type Dropdown */}
-          <label>Property Type</label>
+          <label className="font-bold  text-sm mt-2">Property Type</label>
           <select
             name="propertyType"
             value={filters.propertyType}
@@ -124,7 +123,7 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
             <option value="4bhk">4 BHK</option>
           </select>
 
-          <label>Min Cap Rate</label>
+          <label className="font-bold mt-2 text-sm">Min Cap Rate</label>
           <input
             type="text"
             name="minCapRate"
@@ -135,7 +134,7 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
           />
 
           {/* Range Slider for Min Occupancy */}
-          <label className="text-sm">Min Occupancy (%):</label>
+          <label className="text-sm font-bold">Min Occupancy (%)</label>
           <input
             type="range"
             name="minOccupancy"
@@ -143,12 +142,12 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
             max="100"
             value={filters.minOccupancy}
             onChange={handleChange}
-            className="w-full mb-2"
+            
           />
-          <p>{filters.minOccupancy}%</p>
+          <p className="text-sm">{filters.minOccupancy}%</p>
 
           {/* Source Type Dropdown */}
-          <label>Source Type</label>
+          <label className="font-bold mt-2 text-sm">Source Type</label>
           <select
             name="sourceType"
             value={filters.sourceType}
@@ -162,7 +161,7 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
           </select>
 
           {/* Year Built Range */}
-          <label className="text-sm">Year Built Range:</label>
+          <label className="text-sm mt-2 font-bold">Year Built Range</label>
           <input
             type="text"
             name="yearBuiltMin"
