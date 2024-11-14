@@ -9,7 +9,17 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 
-export function AppSidebar({ filterProperties }: { filterProperties: any }) {
+interface SideBarProps {
+  filterProperties: (filters: {
+    propertyAddress?: string;
+    zipCode?: string;
+    propertyType?: string;
+    priceRangeMin?: number;
+    priceRangeMax?: number;
+  }) => void;
+}
+
+export function SideBar({ filterProperties }: SideBarProps) {
   const [filters, setFilters] = useState({
     zipCode: "",
     propertyAddress: "",
@@ -17,17 +27,21 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
     priceRangeMin: 0,
     priceRangeMax: 0,
     propertyType: "",
-    minCapRate: 0,
+    minCapRate: "",
     minOccupancy: 50,
     sourceType: "",
     yearBuiltMin: "",
     yearBuiltMax: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     setFilters({
       ...filters,
-      [e.target.name]: e.target.value,
+      [e.target?.name]: e.target.value,
     });
   };
 
@@ -39,8 +53,8 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
       zipCode: "",
       propertyAddress: "",
       searchRadius: 50,
-      priceRangeMin: "",
-      priceRangeMax: "",
+      priceRangeMin: 0,
+      priceRangeMax: 0,
       propertyType: "",
       minCapRate: "",
       minOccupancy: 50,
@@ -142,7 +156,6 @@ export function AppSidebar({ filterProperties }: { filterProperties: any }) {
             max="100"
             value={filters.minOccupancy}
             onChange={handleChange}
-            
           />
           <p className="text-sm">{filters.minOccupancy}%</p>
 
