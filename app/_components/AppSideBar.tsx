@@ -9,22 +9,21 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 
-export function AppSidebar() {
+export function AppSidebar({ filterProperties }: { filterProperties: any }) {
   const [filters, setFilters] = useState({
     zipCode: "",
     propertyAddress: "",
     searchRadius: 50,
-    priceRangeMin: "",
-    priceRangeMax: "",
+    priceRangeMin: 0,
+    priceRangeMax: 0,
     propertyType: "",
-    minCapRate: "",
+    minCapRate: 0,
     minOccupancy: 50,
     sourceType: "",
     yearBuiltMin: "",
     yearBuiltMax: "",
   });
 
-  
   const handleChange = (e) => {
     setFilters({
       ...filters,
@@ -35,6 +34,20 @@ export function AppSidebar() {
   // Printing the sleceted filters on Conosle
   const applyFilters = () => {
     console.log("Selected Filters:", filters);
+    filterProperties(filters);
+    setFilters({
+      zipCode: "",
+      propertyAddress: "",
+      searchRadius: 50,
+      priceRangeMin: "",
+      priceRangeMax: "",
+      propertyType: "",
+      minCapRate: "",
+      minOccupancy: 50,
+      sourceType: "",
+      yearBuiltMin: "",
+      yearBuiltMax: "",
+    });
   };
 
   return (

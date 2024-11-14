@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { AppSidebar } from "./_components/AppSideBar";
 import StatsSection from "./_components/StatsSection";
 import PropertySection from "./_components/PropertySection";
@@ -68,17 +69,53 @@ const Page = () => {
       zipcode: "411036",
     },
   ];
-
+  const [propertyList, setPropertyList] = useState(property);
+  const filterProperties = (filters) => {
+    const filteredProperties = property.filter((p) => {
+      let isMatch = true;
+      if (filters.propertyAddress) {
+        isMatch = isMatch && p.address.includes(filters.propertyAddress);
+      }
+      // if (filters.searchRadius) {
+      //   isMatch =
+      //     isMatch &&
+      //     getDistanceFromLatLonInKm(
+      //       p.latitude,
+      //       p.longitude,
+      //       filters.latitude,
+      //       filters.longitude
+      //     ) <= filters.searchRadius;
+      // }
+      if (filters.priceRangeMin) {
+        isMatch =
+          isMatch &&
+          Number(p.salePrice.replace(/[^0-9.-]+/g, "")) >=
+            filters.priceRangeMin;
+      }
+      if (filters.priceRangeMax) {
+        new Intl.NumberFormat();
+        isMatch =
+          isMatch &&
+          Number(p.salePrice.replace(/[^0-9.-]+/g, "")) <=
+            filters.priceRangeMax;
+      }
+      if (filters.propertyType) {
+        isMatch = isMatch && p.apartmentType === filters.propertyType;
+      }
+      return isMatch;
+    });
+    setPropertyList(filteredProperties);
+  };
   return (
     <div className="flex flex-col md:flex-row h-screen">
       <div className="w-full md:w-72">
-        <AppSidebar />
+        <AppSidebar filterProperties={filterProperties} />
       </div>
 
       <div className="flex-1 flex flex-col">
         <div className="h-2/3">
           <Map
-            locations={property.map((p) => {
+            locations={propertyList.map((p) => {
               return {
                 name: p.propertyName,
                 coordinates: [p.longitude, p.latitude],
