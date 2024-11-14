@@ -70,22 +70,14 @@ const Page = () => {
     },
   ];
   const [propertyList, setPropertyList] = useState(property);
+
   const filterProperties = (filters) => {
     const filteredProperties = property.filter((p) => {
       let isMatch = true;
+
       if (filters.propertyAddress) {
         isMatch = isMatch && p.address.includes(filters.propertyAddress);
       }
-      // if (filters.searchRadius) {
-      //   isMatch =
-      //     isMatch &&
-      //     getDistanceFromLatLonInKm(
-      //       p.latitude,
-      //       p.longitude,
-      //       filters.latitude,
-      //       filters.longitude
-      //     ) <= filters.searchRadius;
-      // }
       if (filters.priceRangeMin) {
         isMatch =
           isMatch &&
@@ -93,7 +85,6 @@ const Page = () => {
             filters.priceRangeMin;
       }
       if (filters.priceRangeMax) {
-        new Intl.NumberFormat();
         isMatch =
           isMatch &&
           Number(p.salePrice.replace(/[^0-9.-]+/g, "")) <=
@@ -102,10 +93,20 @@ const Page = () => {
       if (filters.propertyType) {
         isMatch = isMatch && p.apartmentType === filters.propertyType;
       }
+      if (filters.zipcode) {
+        isMatch = isMatch && p.zipcode === filters.zipcode;
+      }
+
       return isMatch;
     });
+
+    // Log selected filter values for propertyType and zipcode
+    console.log("Selected property type:", filters.propertyType);
+    console.log("Selected zipcode:", filters.zipcode);
+
     setPropertyList(filteredProperties);
   };
+
   return (
     <div className="flex flex-col md:flex-row h-screen">
       <div className="w-full md:w-72">
