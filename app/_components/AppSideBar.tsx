@@ -7,9 +7,9 @@ import {
   SidebarGroup,
   SidebarHeader,
 } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
 
 export function AppSidebar() {
-  // State to hold filter values
   const [filters, setFilters] = useState({
     zipCode: "",
     propertyAddress: "",
@@ -18,23 +18,21 @@ export function AppSidebar() {
     priceRangeMax: "",
     propertyType: "",
     minCapRate: "",
-    minOccupancy: 80,
+    minOccupancy: 50,
     sourceType: "",
     yearBuiltMin: "",
     yearBuiltMax: "",
   });
 
-  // Updates state based on input changes
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  
+  const handleChange = (e) => {
     setFilters({
       ...filters,
       [e.target.name]: e.target.value,
     });
   };
 
-  // Logs selected filters to console
+  // Printing the sleceted filters on Conosle
   const applyFilters = () => {
     console.log("Selected Filters:", filters);
   };
@@ -78,6 +76,7 @@ export function AppSidebar() {
             onChange={handleChange}
             className="w-full mb-2"
           />
+          <p>{filters.searchRadius} miles</p>
 
           {/* Price Range Inputs */}
           <label className="text-sm">Price Range:</label>
@@ -99,7 +98,7 @@ export function AppSidebar() {
           />
 
           {/* Property Type Dropdown */}
-          <label >Property Type</label>
+          <label>Property Type</label>
           <select
             name="propertyType"
             value={filters.propertyType}
@@ -112,8 +111,7 @@ export function AppSidebar() {
             <option value="4bhk">4 BHK</option>
           </select>
 
-          {/* Additional Filters */}
-          <label >Min Cap Rate</label>
+          <label>Min Cap Rate</label>
           <input
             type="text"
             name="minCapRate"
@@ -122,6 +120,8 @@ export function AppSidebar() {
             onChange={handleChange}
             className="w-full p-2 border rounded-md mb-2"
           />
+
+          {/* Range Slider for Min Occupancy */}
           <label className="text-sm">Min Occupancy (%):</label>
           <input
             type="range"
@@ -132,9 +132,10 @@ export function AppSidebar() {
             onChange={handleChange}
             className="w-full mb-2"
           />
+          <p>{filters.minOccupancy}%</p>
 
           {/* Source Type Dropdown */}
-          <label >Source Type</label>
+          <label>Source Type</label>
           <select
             name="sourceType"
             value={filters.sourceType}
@@ -168,12 +169,9 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="mt-4">
-        <button
-          onClick={applyFilters}
-          className=" w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
-        >
-          Apply Filters
-        </button>
+        <Button onClick={applyFilters} className="hover:bg-slate-700">
+          Apply Filter
+        </Button>
       </SidebarFooter>
     </Sidebar>
   );
